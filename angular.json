@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "angular-material"
+  "defaultProject": "angular-material",
+  "cli": {
+    "analytics": "a09022f8-5adf-42ae-bbd9-3c4ecfac2370"
+  }
 }
