@@ -7,7 +7,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/list/list.module').then((m) => m.ListModule),
   },
-  { path: '', redirectTo: '/list', pathMatch: 'full' },
+  {
+    path: 'character',
+    loadChildren: () =>
+      import('./pages/character/character.module').then(
+        (m) => m.CharacterModule
+      ),
+  },
+  { path: '**', redirectTo: '/list', pathMatch: 'full' },
 ]
 
 @NgModule({
