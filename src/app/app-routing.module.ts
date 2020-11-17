@@ -3,19 +3,23 @@ import { Routes, RouterModule } from '@angular/router'
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: 'episodes',
     loadChildren: () =>
-      import('./pages/list/list.module').then((m) => m.ListModule),
+      import('./pages/episodes/episodes.module').then((m) => m.EpisodesModule),
   },
   {
-    path: 'character',
+    path: 'characters',
     loadChildren: () =>
       import('./pages/character/character.module').then(
         (m) => m.CharacterModule
       ),
   },
-  { path: 'location', loadChildren: () => import('./pages/location/location.module').then(m => m.LocationModule) },
-  { path: '**', redirectTo: '/list', pathMatch: 'full' },
+  {
+    path: 'locations',
+    loadChildren: () =>
+      import('./pages/location/location.module').then((m) => m.LocationModule),
+  },
+  { path: '**', redirectTo: '/episodes', pathMatch: 'full' },
 ]
 
 @NgModule({

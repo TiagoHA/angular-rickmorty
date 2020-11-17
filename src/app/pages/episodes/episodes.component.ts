@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { MatPaginator } from '@angular/material/paginator'
 import { MatTableDataSource } from '@angular/material/table'
 import { Subscription } from 'rxjs'
-import { IEpisode, IInfo, ListService } from './list.service'
+import { IEpisode, IInfo, EpisodesService } from './episodes.service'
 
 const ELEMENT_DATA: IEpisode[] = [
   {
@@ -66,11 +66,11 @@ const ELEMENT_DATA: IEpisode[] = [
 ]
 
 @Component({
-  selector: 'spa-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  selector: 'spa-episodes',
+  templateUrl: './episodes.component.html',
+  styleUrls: ['./episodes.component.scss'],
 })
-export class ListComponent implements OnInit {
+export class EpisodesComponent implements OnInit {
   private subs?: Subscription
   public episodes?: IEpisode[] = []
   public dataSource?: MatTableDataSource<IEpisode>
@@ -80,7 +80,7 @@ export class ListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator
 
-  constructor(private readonly listService: ListService) {}
+  constructor(private readonly episodesService: EpisodesService) {}
 
   ngOnInit() {
     this.getEpisodes()
@@ -101,7 +101,7 @@ export class ListComponent implements OnInit {
   }
 
   getEpisodes({ next = false } = {}) {
-    this.subs = this.listService
+    this.subs = this.episodesService
       .getEpisodes({ next })
       .subscribe(({ info, results }) => {
         this.episodes = [...this.episodes, ...results]

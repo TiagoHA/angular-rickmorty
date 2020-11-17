@@ -44,7 +44,7 @@ export interface IInfo {
 @Injectable({
   providedIn: 'root',
 })
-export class ListService {
+export class EpisodesService {
   constructor(private http: HttpClient) {}
 
   private readonly API: string = 'https://rickandmortyapi.com/api/episode'
