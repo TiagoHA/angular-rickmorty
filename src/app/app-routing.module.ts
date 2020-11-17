@@ -14,6 +14,7 @@ const routes: Routes = [
         (m) => m.CharacterModule
       ),
   },
+  { path: 'location', loadChildren: () => import('./pages/location/location.module').then(m => m.LocationModule) },
   { path: '**', redirectTo: '/list', pathMatch: 'full' },
 ]
 
