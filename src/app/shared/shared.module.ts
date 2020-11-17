@@ -4,7 +4,7 @@ import { MatPaginatorModule } from '@angular/material/paginator'
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MatPaginatorModule, MatPaginatorModule],
-  exports: [MatPaginatorModule, MatPaginatorModule],
+  imports: [CommonModule, MatPaginatorModule],
+  exports: [MatPaginatorModule],
 })
 export class SharedModule {}

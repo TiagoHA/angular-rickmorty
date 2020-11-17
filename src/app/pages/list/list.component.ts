@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
+import { MatPaginator } from '@angular/material/paginator'
 import { MatTableDataSource } from '@angular/material/table'
+import { Subscription } from 'rxjs'
 import { IEpisode, IInfo, ListService } from './list.service'
 
 const ELEMENT_DATA: IEpisode[] = [
@@ -69,9 +71,14 @@ const ELEMENT_DATA: IEpisode[] = [
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  public episodes: MatTableDataSource<IEpisode>
-  public info: IInfo
-  public displayedColumns: string[] = ['name', 'air_date', 'episode']
+  private subs?: Subscription
+  public episodes?: IEpisode[] = []
+  public dataSource?: MatTableDataSource<IEpisode>
+  public info?: IInfo
+  public displayedColumns: string[] = ['name', 'air_date', 'episode', 'actions']
+  public count = 0
+
+  @ViewChild(MatPaginator) paginator: MatPaginator
 
   constructor(private readonly listService: ListService) {}
 
@@ -79,10 +86,29 @@ export class ListComponent implements OnInit {
     this.getEpisodes()
   }
 
-  getEpisodes() {
-    this.listService.getEpisodes().subscribe(({ info, results }) => {
-      this.episodes = new MatTableDataSource(results)
-      this.info = info
-    })
+  getRecord(row) {
+    console.log(row)
+  }
+
+  ngOnDestroy() {
+    this.subs?.unsubscribe()
+  }
+
+  onPageFired(ev) {
+    if ((ev.pageIndex + 1) * ev.pageSize === ev.length) {
+      this.getEpisodes({ next: true })
+    }
+  }
+
+  getEpisodes({ next = false } = {}) {
+    this.subs = this.listService
+      .getEpisodes({ next })
+      .subscribe(({ info, results }) => {
+        this.episodes = [...this.episodes, ...results]
+        this.dataSource = new MatTableDataSource(this.episodes)
+        this.dataSource.paginator = this.paginator
+        this.info = info
+        this.count = this.count + results.length
+      })
   }
 }

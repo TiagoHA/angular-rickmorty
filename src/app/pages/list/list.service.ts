@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs'
+import { BehaviorSubject, Observable, of } from 'rxjs'
 import { catchError, map, tap } from 'rxjs/operators'
 
 export interface IEpisode {
@@ -48,15 +48,26 @@ export class ListService {
   constructor(private http: HttpClient) {}
 
   private readonly API: string = 'https://rickandmortyapi.com/api/episode'
+  private nextLink = ''
+  private response = new BehaviorSubject<{ info: IInfo; results: IEpisode[] }>(
+    null
+  )
 
-  getEpisodes(): Observable<{ info: IInfo; results: IEpisode[] }> {
-    return this.http.get<{ info: IInfo; results: IEpisode[] }>(this.API).pipe(
-      tap(({ results }) => {
-        console.log(`fetched episodes ${JSON.stringify(results)}`)
-        return results
+  public getEpisodes({ next = false } = {}): Observable<{
+    info: IInfo
+    results: IEpisode[]
+  }> {
+    if (!next && this.response?.value) {
+      return of(this.response.value)
+    }
+
+    const url = next ? this.nextLink : this.API
+    return this.http.get<{ info: IInfo; results: IEpisode[] }>(url).pipe(
+      tap(({ results, info }) => {
+        this.nextLink = info.next
+        this.response.next({ results, info })
       }),
       catchError((err) => {
-        console.log('Erro: ', err)
         return []
       })
     )
