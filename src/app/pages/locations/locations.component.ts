@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'spa-location',
-  templateUrl: './location.component.html',
-  styleUrls: ['./location.component.css']
+  templateUrl: './locations.component.html',
+  styleUrls: ['./locations.component.css']
 })
-export class LocationComponent implements OnInit {
+export class LocationsComponent implements OnInit {
 
   constructor() { }
 

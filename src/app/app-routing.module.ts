@@ -10,14 +10,16 @@ const routes: Routes = [
   {
     path: 'characters',
     loadChildren: () =>
-      import('./pages/character/character.module').then(
-        (m) => m.CharacterModule
+      import('./pages/characters/characters.module').then(
+        (m) => m.CharactersModule
       ),
   },
   {
     path: 'locations',
     loadChildren: () =>
-      import('./pages/location/location.module').then((m) => m.LocationModule),
+      import('./pages/locations/locations.module').then(
+        (m) => m.LocationsModule
+      ),
   },
   { path: '**', redirectTo: '/episodes', pathMatch: 'full' },
 ]
