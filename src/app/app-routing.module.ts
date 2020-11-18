@@ -21,6 +21,9 @@ const routes: Routes = [
         (m) => m.LocationsModule
       ),
   },
+  { path: 'episode', redirectTo: '/episodes', pathMatch: 'full' },
+  { path: 'character', redirectTo: '/characters', pathMatch: 'full' },
+  { path: 'location', redirectTo: '/locations', pathMatch: 'full' },
   { path: '**', redirectTo: '/episodes', pathMatch: 'full' },
 ]
 
