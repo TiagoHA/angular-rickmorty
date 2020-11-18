@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table'
 import { Subscription } from 'rxjs'
 import { IInfo } from 'src/app/shared/models/info.interface'
 import { EpisodesService } from './episodes.service'
-import { IEpisode } from './models/eposides.interface'
+import { IEpisode } from './models/episodes.interface'
 
 @Component({
   selector: 'spa-episodes',
@@ -16,7 +16,7 @@ export class EpisodesComponent implements OnInit {
   public episodes?: IEpisode[] = []
   public dataSource?: MatTableDataSource<IEpisode>
   public info?: IInfo
-  public displayedColumns: string[] = ['name', 'air_date', 'episode', 'actions']
+  public displayedColumns: string[] = ['name', 'air_date', 'episode']
   public count = 0
 
   @ViewChild(MatPaginator) paginator: MatPaginator
