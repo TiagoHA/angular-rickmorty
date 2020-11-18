@@ -31,7 +31,7 @@
   </table>
 
   <mat-paginator
-    [pageSizeOptions]="[10]"
+    [pageSizeOptions]="[10, 20]"
     [length]="this.count"
     showFirstLastButtons
     (page)="onPageFired($event)"
