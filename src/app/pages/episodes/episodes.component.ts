@@ -27,10 +27,6 @@ export class EpisodesComponent implements OnInit {
     this.getEpisodes()
   }
 
-  getRecord(row) {
-    console.log(row)
-  }
-
   ngOnDestroy() {
     this.subs?.unsubscribe()
   }

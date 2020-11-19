@@ -3,6 +3,16 @@ body {
   color: #595959;
 }
 
+.header-con {
+  height: 65px;
+}
+
+.mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+
 .spacer {
   flex: 1 1 auto;
 }

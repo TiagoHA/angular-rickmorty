@@ -19,8 +19,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subs = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        console.log('this.router.url', this.router.url)
-
         this.url = this.router.url
         this.updatingLinks(this.router.url)
       }
@@ -41,6 +39,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.buttons = urls
       .filter((url) => url.url !== link)
       .sort((a, b) => a.name.localeCompare(b.name))
-    ; [this.firstButton, this.secondButton] = this.buttons
+    ;[this.firstButton, this.secondButton] = this.buttons
   }
 }

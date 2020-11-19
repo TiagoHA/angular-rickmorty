@@ -17,7 +17,6 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
-      (click)="getRecord(row)"
       mat-row
       *matRowDef="let row; columns: displayedColumns"
     ></tr>
