@@ -1,3 +1,9 @@
-table {
-  width: 100%;
+.characters-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0px;
+  min-height: calc(-60px + 50vh);
+  flex-wrap: wrap;
+  max-width: 1920px;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, HostListener, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { IInfo } from 'src/app/shared/models/info.interface'
 import { CharactersService } from './characters.service'
@@ -16,8 +16,16 @@ export class CharactersComponent implements OnInit {
 
   constructor(private readonly charactersService: CharactersService) {}
 
+  @HostListener('window:scroll', ['$event'])
+  onScrollEvent($event) {
+    const { scrollTop, scrollTopMax } = $event.target.scrollingElement
+
+    if (scrollTopMax - scrollTop <= 100) {
+      this.getCharacters({ next: true })
+    }
+  }
+
   ngOnInit() {
-    console.log('TCL: CharactersModule -> ngOnInit -> ngOnInit')
     this.getCharacters()
   }
 
@@ -35,7 +43,6 @@ export class CharactersComponent implements OnInit {
     this.subs = this.charactersService
       .getCharacters({ next })
       .subscribe(({ info, results }) => {
-        console.log('TCL: CharactersModule -> getLocations -> results', results)
         this.characters = [...this.characters, ...results]
         this.info = info
       })

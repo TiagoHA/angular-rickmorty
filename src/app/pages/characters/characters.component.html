@@ -1,1 +1,8 @@
-<p>character works!!!!</p>
+<div class="characters-container">
+  <section class="characters-list" *ngIf="characters; else notShow">
+    <ng-container class="characters-list-for" *ngFor="let char of characters; index as i">
+      <spa-character-card [character]="char"></spa-character-card>
+    </ng-container>
+  </section>
+  <ng-template #notShow>Loading</ng-template>
+</div>
