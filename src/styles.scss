@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '~normalize.css';
+
 html,
 body {
   height: 100%;
@@ -8,4 +10,12 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   background-color: #595959;
+
+  font-variant-ligatures: none;
+  text-rendering: optimizeLegibility;
+  text-decoration-skip-ink: auto;
+
+  font-weight: normal;
+  word-wrap: break-word;
+  font-kerning: normal;
 }
