@@ -1,0 +1,22 @@
+<article class="character-card__wrapper">
+  <div class="character-card__img-wrapper">
+    <img [src]="char?.image" [alt]="char.name" />
+  </div>
+  <div class="character-card__content-wrapper">
+    <div class="character-card__section">
+      <h2>{{ char?.name }}</h2>
+      <span class="status character-card__status">
+        <span class="status__icon status character-card__status-icon"> </span>
+        &nbsp;&nbsp; {{ char?.status }} - {{ char.species }}
+      </span>
+    </div>
+    <div class="section character-card__section">
+      <span class="text-gray character-card__text"> Born in: </span>
+      {{ char?.origin?.name }}
+    </div>
+    <div class="section character-card__section">
+      <span class="text-gray character-card__text"> Last known location: </span>
+      {{ char?.location?.name }}
+    </div>
+  </div>
+</article>
