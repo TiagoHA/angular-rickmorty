@@ -2,11 +2,12 @@
 
 @import '~normalize.css';
 
-html,
-body {
+html {
   height: 100%;
 }
+
 body {
+  height: auto;
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   background-color: #595959;
