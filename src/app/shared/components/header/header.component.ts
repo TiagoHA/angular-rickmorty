@@ -41,6 +41,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.buttons = urls
       .filter((url) => url.url !== link)
       .sort((a, b) => a.name.localeCompare(b.name))
-    ;[this.firstButton, this.secondButton] = this.buttons
+    ; [this.firstButton, this.secondButton] = this.buttons
   }
 }
