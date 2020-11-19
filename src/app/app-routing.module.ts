@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'episode', redirectTo: '/episodes', pathMatch: 'full' },
   { path: 'character', redirectTo: '/characters', pathMatch: 'full' },
   { path: 'location', redirectTo: '/locations', pathMatch: 'full' },
-  { path: '**', redirectTo: '/episodes', pathMatch: 'full' },
+  { path: '**', redirectTo: '/characters', pathMatch: 'full' },
 ]
 
 @NgModule({
