@@ -19,7 +19,7 @@ export class CharactersService {
     const url = next ? this.nextLink : this.API
     return this.http.get<IGetCharacters>(url).pipe(
       tap(({ info }) => {
-        this.nextLink = info.next
+        this.nextLink = info?.next
       }),
       catchError((err) => {
         console.error('CharactersService:', err)

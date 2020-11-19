@@ -20,7 +20,7 @@ export class LocationsService {
 
     return this.http.get<IGetLocation>(url).pipe(
       tap(({ info }) => {
-        this.nextLink = info.next
+        this.nextLink = info?.next
       }),
       map(AddQtResidents),
       catchError((err) => {
