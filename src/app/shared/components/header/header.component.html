@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <span>Rick and Morty</span>
+  <span class="spacer"></span>
+  <div class="buttons" *ngIf="buttons.length > 0">
+    <button
+      class="button"
+      mat-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+      [routerLink]="[firstButton.url]"
+    >
+      {{ firstButton.name }}
+    </button>
+    <button
+      class="button"
+      mat-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+      [routerLink]="[secondButton.url]"
+    >
+      {{ secondButton.name }}
+    </button>
+  </div>
+</mat-toolbar>
