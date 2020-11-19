@@ -6,7 +6,12 @@
     <div class="character-card__section">
       <h2>{{ char?.name }}</h2>
       <span class="status character-card__status">
-        <span class="status__icon status character-card__status-icon"> </span>
+        <span
+          [className]="
+            'status__icon status character-card__status-icon' + this.status
+          "
+        >
+        </span>
         &nbsp;&nbsp; {{ char?.status }} - {{ char.species }}
       </span>
     </div>

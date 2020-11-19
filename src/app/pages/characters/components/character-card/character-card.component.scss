@@ -89,16 +89,17 @@
     margin-right: 0.375rem;
     background: rgb(158, 158, 158) none repeat scroll 0% 0%;
     border-radius: 50%;
+
+    &--alive {
+      background-color: #5c4;
+    }
+
+    &--dead {
+      background-color: #d63d2e;
+    }
   }
 
   &__text {
     color: rgb(158, 158, 158);
   }
 }
-
-
-// @media (max-width: 40em) {
-//   img {
-//     height: 300px;
-//   }
-// }

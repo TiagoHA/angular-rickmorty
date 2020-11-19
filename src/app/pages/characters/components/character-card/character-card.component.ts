@@ -9,16 +9,21 @@ import { ICharacter } from '../../models/characters.interface'
 export class CharacterCardComponent implements OnInit {
   @Input('character') char: ICharacter
 
+  public status = ''
+
   constructor() {}
 
-  ngOnInit(): void {}
-}
+  ngOnInit() {
+    console.log('TCL: CharacterCardComponent -> ngOnInit -> ngOnInit')
+    this.dynamicStatus()
+  }
 
-/*
-name
-status
-species
-last location - location.name
-image
-origin
-*/
+  dynamicStatus() {
+    const { status } = this.char
+    if (status === 'Alive') {
+      this.status = ' character-card__status-icon--alive'
+    } else if (status === 'Dead') {
+      this.status = ' character-card__status-icon--alive'
+    }
+  }
+}
