@@ -14,7 +14,6 @@ export class CharacterCardComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log('TCL: CharacterCardComponent -> ngOnInit -> ngOnInit')
     this.dynamicStatus()
   }
 

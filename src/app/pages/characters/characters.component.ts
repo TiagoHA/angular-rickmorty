@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Subscription } from 'rxjs'
 import { IInfo } from 'src/app/shared/models/info.interface'
 import { CharactersService } from './characters.service'
@@ -16,21 +16,16 @@ export class CharactersComponent implements OnInit {
 
   constructor(private readonly charactersService: CharactersService) {}
 
-  @HostListener('window:scroll', ['$event'])
-  onScrollEvent($event) {
-    const { scrollTop, scrollTopMax } = $event.target.scrollingElement
-
-    if (scrollTopMax - scrollTop <= 100) {
-      this.getCharacters({ next: true })
-    }
-  }
-
   ngOnInit() {
     this.getCharacters()
   }
 
   ngOnDestroy() {
     this.subs?.unsubscribe()
+  }
+
+  onScrollDown (ev) {
+    this.getCharacters({ next: true })
   }
 
   onPageFired(ev) {

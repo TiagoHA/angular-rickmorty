@@ -1,8 +1,18 @@
 <div class="characters-container">
-  <section class="characters-list" *ngIf="characters; else notShow">
-    <ng-container class="characters-list-for" *ngFor="let char of characters; index as i">
-      <spa-character-card [character]="char"></spa-character-card>
-    </ng-container>
+  <section class="characters-wrapper" *ngIf="characters; else notShow">
+    <div
+      class="characters-list"
+      infinite-scroll
+      (scrolled)="onScrollDown()"
+      [fromRoot]="true"
+    >
+      <ng-container
+        class="characters-list-for"
+        *ngFor="let char of characters; index as i"
+      >
+        <spa-character-card [character]="char"></spa-character-card>
+      </ng-container>
+    </div>
   </section>
   <ng-template #notShow>Loading</ng-template>
 </div>
